@@ -112,11 +112,13 @@ function addGoal(event) {
   
    if (!goalScorerName) {
     M.toast({html: 'Please select a goal scorer'});
+	 M.FormSelect.getInstance(elements.goalScorer).open();
     return;
   }
   
   if (!goalAssistName) {
     M.toast({html: 'Please select an assistant'});
+	M.FormSelect.getInstance(elements.goalAssist).open();
     return;
   }
   
