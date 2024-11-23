@@ -149,11 +149,6 @@ function addopGoal(event) {
   STATE.data.push(goalData);
   updateLog();
   Storage.save(STORAGE_KEYS.GOALS, STATE.data);
-  
-  // Reset form and update Materialize select
-  elements.goalForm.reset();
-  M.FormSelect.init(elements.goalScorer);
-  M.FormSelect.init(elements.goalAssist);
 }
 
 
