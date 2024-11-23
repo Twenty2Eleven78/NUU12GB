@@ -209,11 +209,14 @@ function generateStats() {
   // Count goals
   const goalScorers = new Map();
   const assists = new Map();
+  let oppositionGoals = 0;  // Initialize opposition goals counter
+  let teamGoals = 0;       // Initialize team goals counter
   
   STATE.data.forEach(({ goalScorerName, goalAssistName }) => {
    if (goalScorerName === "Opposition Team") {
       oppositionGoals++;
     } else {
+		teamGoals++;
       goalScorers.set(goalScorerName, (goalScorers.get(goalScorerName) || 0) + 1);
       if (goalAssistName) {
         assists.set(goalAssistName, (assists.get(goalAssistName) || 0) + 1);
