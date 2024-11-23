@@ -199,7 +199,7 @@ function formatLogForWhatsApp() {
     .map(({ timestamp, goalScorerName, goalAssistName }) => {
       const isOppositionGoal = goalScorerName === "Opposition Team";
       return isOppositionGoal 
-        ? `⚽ ${timestamp} - Opposition Goal`
+        ? `❌ ${timestamp} - Opposition Goal`
         : `🥅 ${timestamp} - Goal: ${goalScorerName}, Assist: ${goalAssistName}`;
     })
     .join('\n');
