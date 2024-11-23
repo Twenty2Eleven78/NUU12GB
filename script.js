@@ -133,20 +133,20 @@ function addGoal(event) {
   M.FormSelect.init(elements.goalAssist);
 }
 
-function addopGoal(event) {
-  event.preventDefault();
+function addopGoal() {
+  //event.preventDefault();
   
-  const goalScorerName = "Opposition Player";
-  const goalScorerName = "Opposition Player";
+  const opgoalScorerName = "Opposition Player";
+  const opgoalScorerName = "Opposition Player";
   const currentSeconds = getCurrentSeconds();
-  const goalData = {
+  const opgoalData = {
     timestamp: formatTime(currentSeconds),
-    goalScorerName,
-    goalAssistName,
+    opgoalScorerName,
+    opgoalAssistName,
     rawTime: currentSeconds
   };
   
-  STATE.data.push(goalData);
+  STATE.data.push(opgoalData);
   updateLog();
   Storage.save(STORAGE_KEYS.GOALS, STATE.data);
 }
