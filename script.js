@@ -12,6 +12,7 @@ const elements = {
   stopwatch: document.getElementById('stopwatch'),
   startPauseButton: document.getElementById('startPauseButton'),
   goalButton: document.getElementById('goalButton'),
+  opgoalButton: document.getElementById('opgoalButton'),
   goalScorer: document.getElementById('goalScorer'),
   goalAssist: document.getElementById('goalAssist'),
   resetButton: document.getElementById('resetButton'),
@@ -132,6 +133,30 @@ function addGoal(event) {
   M.FormSelect.init(elements.goalAssist);
 }
 
+function addopGoal(event) {
+  event.preventDefault();
+  
+  const goalScorerName = "Opposition Player";
+  const goalScorerName = "Opposition Player";
+  const currentSeconds = getCurrentSeconds();
+  const goalData = {
+    timestamp: formatTime(currentSeconds),
+    goalScorerName,
+    goalAssistName,
+    rawTime: currentSeconds
+  };
+  
+  STATE.data.push(goalData);
+  updateLog();
+  Storage.save(STORAGE_KEYS.GOALS, STATE.data);
+  
+  // Reset form and update Materialize select
+  elements.goalForm.reset();
+  M.FormSelect.init(elements.goalScorer);
+  M.FormSelect.init(elements.goalAssist);
+}
+
+
 function updateLog() {
   elements.log.innerHTML = STATE.data
     .sort((a, b) => a.rawTime - b.rawTime)
@@ -250,6 +275,7 @@ function initializeApp() {
 // Event Listeners
 elements.startPauseButton.addEventListener('click', startStopwatch);
 elements.goalForm.addEventListener('submit', addGoal);
+elements.opgoalButton.addEventListener('click', addopGoal);
 elements.resetButton.addEventListener('click', resetTracker);
 elements.shareButton.addEventListener('click', shareToWhatsApp);
 document.addEventListener('DOMContentLoaded', initializeApp);
