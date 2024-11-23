@@ -133,11 +133,11 @@ function addGoal(event) {
   M.FormSelect.init(elements.goalAssist);
 }
 
-function addopGoal() {
+function opaddGoal() {
   //event.preventDefault();
   
   const opgoalScorerName = "Opposition Player";
-  const opgoalScorerName = "Opposition Player";
+  const opgoalAssistName = "Opposition Player";
   const currentSeconds = getCurrentSeconds();
   const opgoalData = {
     timestamp: formatTime(currentSeconds),
@@ -270,7 +270,7 @@ function initializeApp() {
 // Event Listeners
 elements.startPauseButton.addEventListener('click', startStopwatch);
 elements.goalForm.addEventListener('submit', addGoal);
-elements.opgoalButton.addEventListener('click', addopGoal);
+elements.opgoalButton.addEventListener('click', opaddGoal);
 elements.resetButton.addEventListener('click', resetTracker);
 elements.shareButton.addEventListener('click', shareToWhatsApp);
 document.addEventListener('DOMContentLoaded', initializeApp);
