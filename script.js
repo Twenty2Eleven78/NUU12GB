@@ -110,19 +110,14 @@ function addGoal(event) {
   const goalScorerName = elements.goalScorer.value;
   const goalAssistName = elements.goalAssist.value;
   
-    // Remove required attribute temporarily to avoid the invalid form control error
-  elements.goalScorer.removeAttribute('required');
-  elements.goalAssist.removeAttribute('required');
   
    if (!goalScorerName) {
     M.toast({html: 'Please select a goal scorer'});
-	 M.FormSelect.getInstance(elements.goalScorer).open();
-    return;
+   return;
   }
   
   if (!goalAssistName) {
-    M.toast({html: 'Please select an assistant'});
-	M.FormSelect.getInstance(elements.goalAssist).open();
+    M.toast({html: 'Please select an assist'});
     return;
   }
   
