@@ -134,15 +134,11 @@ function addGoal(event) {
 }
 
 function opaddGoal() {
-  //event.preventDefault();
-  
-  const opgoalScorerName = "Opposition Player";
-  const opgoalAssistName = "Opposition Player";
   const currentSeconds = getCurrentSeconds();
   const opgoalData = {
     timestamp: formatTime(currentSeconds),
-    opgoalScorerName,
-    opgoalAssistName,
+    goalScorerName: "Opposition Team",
+    goalAssistName: "Opposition Team",
     rawTime: currentSeconds
   };
   
@@ -155,13 +151,16 @@ function opaddGoal() {
 function updateLog() {
   elements.log.innerHTML = STATE.data
     .sort((a, b) => a.rawTime - b.rawTime)
-    .map(({ timestamp, goalScorerName, goalAssistName }) => 
-      `<div class="card-panel">
+    .map(({ timestamp, goalScorerName, goalAssistName }) => {
+      const isOppositionGoal = goalScorerName === "Opposition Team";
+      const cardClass = isOppositionGoal ? 'red lighten-4' : ''; // Add red background for opposition goals
+      
+      return `<div class="card-panel ${cardClass}">
         <span class="blue-text text-darken-2">${timestamp}</span>: 
-        <strong>Goal:</strong> ${goalScorerName}, 
-        <strong>Assist:</strong> ${goalAssistName}
-       </div>`
-    )
+        <strong>${isOppositionGoal ? 'Opposition Goal' : 'Goal'}</strong>
+        ${isOppositionGoal ? '' : `: ${goalScorerName}, <strong>Assist:</strong> ${goalAssistName}`}
+       </div>`;
+    })
     .join('');
 }
 
@@ -209,9 +208,13 @@ function generateStats() {
   const assists = new Map();
   
   STATE.data.forEach(({ goalScorerName, goalAssistName }) => {
-    goalScorers.set(goalScorerName, (goalScorers.get(goalScorerName) || 0) + 1);
-    if (goalAssistName) {
-      assists.set(goalAssistName, (assists.get(goalAssistName) || 0) + 1);
+   if (goalScorerName === "Opposition Team") {
+      oppositionGoals++;
+    } else {
+      goalScorers.set(goalScorerName, (goalScorers.get(goalScorerName) || 0) + 1);
+      if (goalAssistName) {
+        assists.set(goalAssistName, (assists.get(goalAssistName) || 0) + 1);
+      }
     }
   });
   
@@ -227,7 +230,7 @@ function generateStats() {
     .map(([name, assists]) => `${name}: ${assists}`)
     .join(', ');
   
-  return `📊 Stats:\nTop Scorers: ${topScorers}\nTop Assists: ${topAssists}`;
+  return `📊 Stats:\nTeam Goals: ${goalScorers.size > 0 ? Array.from(goalScorers.values()).reduce((a, b) => a + b) : 0}\nOpposition Goals: ${oppositionGoals}\nTop Scorers: ${topScorers}\nTop Assists: ${topAssists}`;
 }
 
 // Share to WhatsApp function
