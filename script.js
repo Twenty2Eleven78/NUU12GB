@@ -111,8 +111,7 @@ function addGoal(event) {
   const goalAssistName = elements.goalAssist.value;
   
   if (!goalScorerName || !goalAssistName) {
-    //M.toast({html: 'Please select both scorer and assistant'});
-	alert('Please select both scorer and assistant');
+	M.toast({html: 'Please select both scorer and assist'});
     return;
   }
   
