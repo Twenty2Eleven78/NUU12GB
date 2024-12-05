@@ -140,9 +140,8 @@ function addGoal(event) {
 
 function opaddGoal() {
   const currentSeconds = getCurrentSeconds();
-  const baseTimeFormat = formatTime(currentSeconds)
   const opgoalData = {
-    timestamp: Math.ceil(baseTimeFormat),
+    timestamp: Math.ceil(currentSeconds /60),
     goalScorerName: "Opposition Team",
     goalAssistName: "Opposition Team",
     rawTime: currentSeconds
