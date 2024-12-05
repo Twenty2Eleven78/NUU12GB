@@ -65,9 +65,8 @@ function formatTime(seconds) {
 
 function getCurrentSeconds() {
   if (!STATE.isRunning || !STATE.startTimestamp) return STATE.seconds;
-  
-  const currentTime = Date.now();
-  const elapsedSeconds = Math.floor((currentTime - STATE.startTimestamp) / 1000);
+    const currentTime = Date.now();
+    const elapsedSeconds = Math.floor((currentTime - STATE.startTimestamp) / 1000);
   return elapsedSeconds;
 }
 
@@ -88,6 +87,7 @@ function startStopwatch() {
     }
     STATE.intervalId = setInterval(updateStopwatchDisplay, 100);
   } else {
+  
     // Pausing the timer
     clearInterval(STATE.intervalId);
     STATE.isRunning = false;
@@ -140,8 +140,9 @@ function addGoal(event) {
 
 function opaddGoal() {
   const currentSeconds = getCurrentSeconds();
+  const baseTimeFormat = formatTime(currentSeconds)
   const opgoalData = {
-    timestamp: formatTime(currentSeconds),
+    timestamp: Math.ceil(baseTimeFormat),
     goalScorerName: "Opposition Team",
     goalAssistName: "Opposition Team",
     rawTime: currentSeconds
