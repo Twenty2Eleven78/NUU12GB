@@ -166,7 +166,7 @@ function updateLog() {
       const cardClass = isOppositionGoal ? 'red lighten-4' : ''; // Add red background for opposition goals
       
       return `<div class="card-panel ${cardClass}">
-        <span class="blue-text text-darken-2">${timestamp}</span>: 
+        <span class="blue-text text-darken-2">${timestamp}</span>' -  
         <strong>${isOppositionGoal ? 'Opposition Goal' : 'Goal'}</strong>
         ${isOppositionGoal ? '' : `: ${goalScorerName}, <strong>Assist:</strong> ${goalAssistName}`}
        </div>`;
