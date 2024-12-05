@@ -122,7 +122,7 @@ function addGoal(event) {
   
   const currentSeconds = getCurrentSeconds();
   const goalData = {
-    timestamp: formatTime(currentSeconds),
+    timestamp: Math.ceil(currentSeconds / 60),
     goalScorerName,
     goalAssistName,
     rawTime: currentSeconds
@@ -141,7 +141,7 @@ function addGoal(event) {
 function opaddGoal() {
   const currentSeconds = getCurrentSeconds();
   const opgoalData = {
-    timestamp: Math.ceil(currentSeconds /60),
+    timestamp: Math.ceil(currentSeconds / 60),
     goalScorerName: "Opposition Team",
     goalAssistName: "Opposition Team",
     rawTime: currentSeconds
