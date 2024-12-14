@@ -289,16 +289,6 @@ function initializeApp() {
   updateLog();
   elements.startPauseButton.textContent = STATE.isRunning ? "Pause Game" : "Start Game";
 
-  //initialise selects
-  document.addEventListener('DOMContentLoaded', function() {
-    const goalScorer = document.getElementById('goalScorer');
-    const goalAssist = document.getElementById('goalAssist');
-  
-    // Set default selected option
-    goalScorer.selectedIndex = 0;
-    goalAssist.selectedIndex = 0;
-  });
-  
   // Initialize Materialize components
   //M.FormSelect.init(document.querySelectorAll('select'));
 }
