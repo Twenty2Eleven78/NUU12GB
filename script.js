@@ -96,7 +96,7 @@ function startStopwatch() {
   }
   
   // Update UI and save state
-  elements.startPauseButton.textContent = STATE.isRunning ? "Pause" : "Start";
+  elements.startPauseButton.textContent = STATE.isRunning ? "Pause Game" : "Start Game";
   Storage.save(STORAGE_KEYS.IS_RUNNING, STATE.isRunning);
   Storage.save(STORAGE_KEYS.START_TIMESTAMP, STATE.startTimestamp);
   Storage.save(STORAGE_KEYS.ELAPSED_TIME, STATE.seconds);
@@ -193,7 +193,7 @@ function resetTracker() {
   // Reset UI
   updateStopwatchDisplay();
   updateLog();
-  elements.startPauseButton.textContent = "Start";
+  elements.startPauseButton.textContent = "Start Game";
   
   // Clear storage
   Storage.clear();
@@ -284,7 +284,7 @@ function initializeApp() {
   // Update UI with saved data
   updateStopwatchDisplay();
   updateLog();
-  elements.startPauseButton.textContent = STATE.isRunning ? "Pause" : "Start";
+  elements.startPauseButton.textContent = STATE.isRunning ? "Pause Game" : "Start Game";
   
   // Initialize Materialize components
   //M.FormSelect.init(document.querySelectorAll('select'));
