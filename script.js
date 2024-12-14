@@ -102,6 +102,20 @@ function startStopwatch() {
   Storage.save(STORAGE_KEYS.ELAPSED_TIME, STATE.seconds);
 }
 
+// Toast function
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.position = 'fixed';
+  toast.style.top = '10px';
+  toast.style.right = '10px';
+  toast.style.backgroundColor = '#333';
+  toast.style.color = 'white';
+  toast.style.padding = '10px';
+  document.body.appendChild(toast);
+  setTimeout(() => document.body.removeChild(toast), 3000);
+}
+
 // Goal tracking
 function addGoal(event) {
   event.preventDefault();
@@ -111,12 +125,12 @@ function addGoal(event) {
   
   
    if (!goalScorerName) {
-    M.toast({html: 'Please select a goal scorer'});
+    showToast({html: 'Please select a goal scorer'});
    return;
   }
   
   if (!goalAssistName) {
-    M.toast({html: 'Please select an assist'});
+    showToast({html: 'Please select an assist'});
     return;
   }
   
@@ -252,7 +266,7 @@ function generateStats() {
 // Share to WhatsApp function
 function shareToWhatsApp() {
   if (STATE.data.length === 0) {
-    M.toast({html: 'No goals to share yet!'});
+    showToast({html: 'No goals to share yet!'});
     return;
   }
   const formattedLog = formatLogForWhatsApp();
