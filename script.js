@@ -287,7 +287,7 @@ function initializeApp() {
   elements.startPauseButton.textContent = STATE.isRunning ? "Pause" : "Start";
   
   // Initialize Materialize components
-  M.FormSelect.init(document.querySelectorAll('select'));
+  //M.FormSelect.init(document.querySelectorAll('select'));
 }
 
 // Event Listeners
