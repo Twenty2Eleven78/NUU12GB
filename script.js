@@ -125,12 +125,12 @@ function addGoal(event) {
   
   
    if (!goalScorerName) {
-    showToast({html: 'Please select a goal scorer'});
+    showToast('Please select a goal scorer');
    return;
   }
   
   if (!goalAssistName) {
-    showToast({html: 'Please select an assist'});
+    showToast('Please select an assist');
     return;
   }
   
@@ -266,7 +266,7 @@ function generateStats() {
 // Share to WhatsApp function
 function shareToWhatsApp() {
   if (STATE.data.length === 0) {
-    showToast({html: 'No goals to share yet!'});
+    showToast('No goals to share yet!');
     return;
   }
   const formattedLog = formatLogForWhatsApp();
