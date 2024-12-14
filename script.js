@@ -136,10 +136,8 @@ function addGoal(event) {
   updateLog();
   Storage.save(STORAGE_KEYS.GOALS, STATE.data);
   
-  // Reset form and update Materialize select
+  // Reset form
   elements.goalForm.reset();
-  //M.FormSelect.init(elements.goalScorer);
-  //M.FormSelect.init(elements.goalAssist);
   resetSelect(elements.goalScorer);
   resetSelect(elements.goalAssist);
 }
@@ -157,10 +155,8 @@ function opaddGoal() {
   updateLog();
   Storage.save(STORAGE_KEYS.GOALS, STATE.data);
   
-    // Reset form and update Materialize select
+  // Reset form
   elements.goalForm.reset();
-  //M.FormSelect.init(elements.goalScorer);
-  //M.FormSelect.init(elements.goalAssist);
   resetSelect(elements.goalScorer);
   resetSelect(elements.goalAssist);
 }
