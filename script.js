@@ -102,11 +102,12 @@ function startStopwatch() {
   Storage.save(STORAGE_KEYS.ELAPSED_TIME, STATE.seconds);
 }
 
+// reset form selects
 function resetSelect(selectElement) {
   selectElement.selectedIndex = 0;
 }
 
-// Goal tracking
+// Add Goal tracking
 function addGoal(event) {
   event.preventDefault();
   
@@ -142,6 +143,7 @@ function addGoal(event) {
   resetSelect(elements.goalAssist);
 }
 
+// Add opposition Goal
 function opaddGoal() {
   const currentSeconds = getCurrentSeconds();
   const opgoalData = {
@@ -161,7 +163,7 @@ function opaddGoal() {
   resetSelect(elements.goalAssist);
 }
 
-
+// Update goal log
 function updateLog() {
   elements.log.innerHTML = STATE.data
     .sort((a, b) => a.rawTime - b.rawTime)
@@ -178,6 +180,7 @@ function updateLog() {
     .join('');
 }
 
+// Reset whole tracker and start new
 function resetTracker() {
   if (!confirm('Are you sure you want to reset the stopwatch and log data?')) {
     return;
@@ -285,6 +288,16 @@ function initializeApp() {
   updateStopwatchDisplay();
   updateLog();
   elements.startPauseButton.textContent = STATE.isRunning ? "Pause Game" : "Start Game";
+
+  //initialise selects
+  document.addEventListener('DOMContentLoaded', function() {
+    const goalScorer = document.getElementById('goalScorer');
+    const goalAssist = document.getElementById('goalAssist');
+  
+    // Set default selected option
+    goalScorer.selectedIndex = 0;
+    goalAssist.selectedIndex = 0;
+  });
   
   // Initialize Materialize components
   //M.FormSelect.init(document.querySelectorAll('select'));
