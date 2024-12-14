@@ -102,18 +102,8 @@ function startStopwatch() {
   Storage.save(STORAGE_KEYS.ELAPSED_TIME, STATE.seconds);
 }
 
-// Toast function
-function showToast(message) {
-  const toast = document.createElement('div');
-  toast.textContent = message;
-  toast.style.position = 'fixed';
-  toast.style.top = '10px';
-  toast.style.right = '10px';
-  toast.style.backgroundColor = '#333';
-  toast.style.color = 'white';
-  toast.style.padding = '10px';
-  document.body.appendChild(toast);
-  setTimeout(() => document.body.removeChild(toast), 3000);
+function resetSelect(selectElement) {
+  selectElement.selectedIndex = 0;
 }
 
 // Goal tracking
@@ -125,13 +115,11 @@ function addGoal(event) {
   
   
    if (!goalScorerName) {
-    //showToast('Please select a goal scorer');
     alert('Please select a Goal Scorer!');
    return;
   }
   
   if (!goalAssistName) {
-    //showToast('Please select an assist');
     alert('Please select a Goal Assist!');
     return;
   }
@@ -150,8 +138,10 @@ function addGoal(event) {
   
   // Reset form and update Materialize select
   elements.goalForm.reset();
-  M.FormSelect.init(elements.goalScorer);
-  M.FormSelect.init(elements.goalAssist);
+  //M.FormSelect.init(elements.goalScorer);
+  //M.FormSelect.init(elements.goalAssist);
+  resetSelect(elements.goalScorer);
+  resetSelect(elements.goalAssist);
 }
 
 function opaddGoal() {
@@ -169,8 +159,10 @@ function opaddGoal() {
   
     // Reset form and update Materialize select
   elements.goalForm.reset();
-  M.FormSelect.init(elements.goalScorer);
-  M.FormSelect.init(elements.goalAssist);
+  //M.FormSelect.init(elements.goalScorer);
+  //M.FormSelect.init(elements.goalAssist);
+  resetSelect(elements.goalScorer);
+  resetSelect(elements.goalAssist);
 }
 
 
@@ -268,7 +260,7 @@ function generateStats() {
 // Share to WhatsApp function
 function shareToWhatsApp() {
   if (STATE.data.length === 0) {
-    showToast('No goals to share yet!');
+    alert('No goals to share yet!');
     return;
   }
   const formattedLog = formatLogForWhatsApp();
