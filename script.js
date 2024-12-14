@@ -125,12 +125,14 @@ function addGoal(event) {
   
   
    if (!goalScorerName) {
-    showToast('Please select a goal scorer');
+    //showToast('Please select a goal scorer');
+    alert('Please select a Goal Scorer!');
    return;
   }
   
   if (!goalAssistName) {
-    showToast('Please select an assist');
+    //showToast('Please select an assist');
+    alert('Please select a Goal Assist!');
     return;
   }
   
