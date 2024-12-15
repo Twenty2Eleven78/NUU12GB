@@ -5,3 +5,4 @@ NUFC Goal Tracker
 1.2 - Whats App Report
 1.3 - General application ui and function improvements
 1.31 - Added time rounding (round up) to Goal Log
+1.32 - Removed Materialize JS
