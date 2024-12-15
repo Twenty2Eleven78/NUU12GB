@@ -16,6 +16,5 @@ var URLS = [
   `${nugtu12gbPATH}/`,
   `${nugtu12gbPATH}/index.html`,
   `${nugtu12gbPATH}/script.js`,
-  `${nugtu12gbPATH}/materialize.min.js`,
   `${nugtu12gbPATH}/jquery-3.6.0.min.js`
 ]
