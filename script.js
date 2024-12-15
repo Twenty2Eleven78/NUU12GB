@@ -114,8 +114,7 @@ function addGoal(event) {
   const goalScorerName = elements.goalScorer.value;
   const goalAssistName = elements.goalAssist.value;
   
-  
-   if (!goalScorerName) {
+     if (!goalScorerName) {
     alert('Please select a Goal Scorer!');
    return;
   }
@@ -202,6 +201,7 @@ function resetTracker() {
   Storage.clear();
 }
 
+// format log for whatsapp
 function formatLogForWhatsApp() {
   const gameTime = formatTime(STATE.seconds);
   const header = `⚽ Match Summary (Time: ${gameTime})\n\n`;
@@ -289,8 +289,6 @@ function initializeApp() {
   updateLog();
   elements.startPauseButton.textContent = STATE.isRunning ? "Pause Game" : "Start Game";
 
-  // Initialize Materialize components
-  //M.FormSelect.init(document.querySelectorAll('select'));
 }
 
 // Event Listeners
