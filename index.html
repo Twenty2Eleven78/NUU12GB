@@ -104,16 +104,12 @@
   <script>
    //initialise selects
    document.addEventListener('DOMContentLoaded', function() {
-    const goalScorer = document.getElementById('goalScorer');
-    const goalAssist = document.getElementById('goalAssist');
-  
-    // Set default selected option
-    goalScorer.selectedIndex = 0;
-    goalAssist.selectedIndex = 0;
-    // Ensure selects are visible and functional
-    goalScorer.style.display = 'block';
-    goalAssist.style.display = 'block';
+  const selects = document.querySelectorAll('#goalScorer, #goalAssist');
+  selects.forEach(select => {
+    select.value = ""; // Set default value
+    select.style.display = 'block'; // Ensure visibility
   });
+});
 </script>
   <script src="script.js"></script>
     <script>
