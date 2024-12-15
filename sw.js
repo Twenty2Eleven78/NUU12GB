@@ -15,7 +15,7 @@ var VERSION = 'version_133';
 var URLS = [    
   `${nugtu12gbPATH}/`,
   `${nugtu12gbPATH}/index.html`,
-  `${nugtu12gbPATH}/gstyle.cs`,
+  `${nugtu12gbPATH}/style.css`,
   `${nugtu12gbPATH}/materialIcons.woff2`,
   `${nugtu12gbPATH}/script.js`,
   `${nugtu12gbPATH}/jquery-3.6.0.min.js`
