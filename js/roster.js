@@ -56,8 +56,9 @@ const RosterManager = (function() {
         const currentGoalScorer = goalScorerSelect.value;
         const currentGoalAssist = goalAssistSelect.value;
 
-        // Clear existing options
+        // set default options
         goalScorerSelect.innerHTML = '<option value="">Select goal scorer</option>';
+        goalScorerSelect.innerHTML = '<option value="OwnGoal">Own Goal</option>';
         goalAssistSelect.innerHTML = '<option value="">Select goal assist</option>';
         goalAssistSelect.innerHTML += '<option value="N/A">N/A</option>';
 
