@@ -1,9 +1,10 @@
-NUFC Goal Tracker
-
-1.0 - Initial working applicatio model
-1.1 - layout Changes
-1.2 - Whats App Report
-1.3 - General application ui and function improvements
-1.31 - Added time rounding (round up) to Goal Log
-1.32 - Removed Materialize JS
-1.33 - localised google font and style
+<font color="red"<b>NUFC GameTime App Release Notes</b></font>
+<br><br>
+<li>1.0 - Initial working application modal</li>
+<li>1.1 - layout Changes</li>
+<li>1.2 - Whats App Report</li>
+<li>1.3 - General application ui and function improvements</li>
+<li>2.0 - Added Roster/team Management feature</li>
+<li>2.1 - General application ui and function improvements</li>
+<li>2.11 - Added time rounding (round up) to Goal Log</li>
+<li><b>3.0 - UI Overhall, ScoreBoard, Nav Pills, Modals, Fixture Management</b></li>
