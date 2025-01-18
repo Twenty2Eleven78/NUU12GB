@@ -26,7 +26,8 @@ const RosterManager = (function() {
   // Set a default roster if not roster is stored
   function getDefaultRoster() {
     return [
-      'Player1', 'Player2'
+      'Own Goal', 'A.Seaman','A-R.Obidi','D.Peacock','E.Doyle','E.Van-Kerro','E.Mutiti','F.Asadi','F.Kendall','H.Strowthers','M.Finch','M.Luttwak','R.Azar','S.Smith'
+      ,'T.Rushmer','V.Aig-Imoru'
     ];
   }
 
@@ -73,10 +74,6 @@ const RosterManager = (function() {
         if (currentGoalAssist && (currentGoalAssist === 'N/A' || roster.includes(currentGoalAssist))) {
           goalAssistSelect.value = currentGoalAssist;
         }
-
-        // Reinitialize Materialize selects
-        // M.FormSelect.init(goalScorerSelect);
-        // M.FormSelect.init(goalAssistSelect);
       }
     },
 
