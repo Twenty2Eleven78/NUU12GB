@@ -523,7 +523,7 @@ function formatLogForWhatsApp() {
     gameResult = 'WIN'}
   else {gameResult = 'LOSS'}  
 
-  const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n ⌚ Game Time: ${gameTime}\n 🔢 Result: ${gameResult} (${stats.teamGoals} - ${stats.oppositionGoals}) \n\n`;
+  const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n ⌚ Game Time: ${gameTime}\n 🔢 Result: ${gameResult} (${stats.teamgoals} - ${stats.oppositiongoals}) \n\n`;
   
   const allEvents = [...STATE.data, ...STATE.matchEvents]
     .sort((a, b) => a.rawTime - b.rawTime)
@@ -543,7 +543,7 @@ function formatLogForWhatsApp() {
     .join('\n');
     
   //const stats = generateStats();
-  return encodeURIComponent(`${header}${allEvents}\n\n${stats}`);
+  return encodeURIComponent(`${header}${allEvents}\n\n${stats.statsstring}`);
 }
 
 // Whatsapp statistics summary 
@@ -579,7 +579,11 @@ function generateStats() {
     .map(([name, assists]) => `${name}: ${assists}`)
     .join(', ');
   
-  return `📊 Stats:\nTeam Goals: ${goalScorers.size > 0 ? Array.from(goalScorers.values()).reduce((a, b) => a + b) : 0}\nOpposition Goals: ${oppositionGoals}\nTop Scorers: ${topScorers}\nTop Assists: ${topAssists}`;
+  return {
+        statsstring:  `📊 Stats:\nTeam Goals: ${goalScorers.size > 0 ? Array.from(goalScorers.values()).reduce((a, b) => a + b) : 0}\nOpposition Goals: ${oppositionGoals}\nTop Scorers: ${topScorers}\nTop Assists: ${topAssists}`,
+        teamGoals: teamGoals,
+        oppositiongoals: oppositionGoals
+  }
 }
 
 // Share to WhatsApp function
