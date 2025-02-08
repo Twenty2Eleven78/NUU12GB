@@ -516,13 +516,14 @@ function formatLogForWhatsApp() {
   const team2Name = elements.Team2NameElement.textContent;
   const stats = generateStats();
 
-  //const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n (Game Time: ${gameTime})\n Score: ${team1Name} (${stats.teamGoals}) - ${team2Name} (${stats.oppositionGoals}) \n\n`;
-  let iswin = 'Draw'
+  //const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n Game Time: ${gameTime})\n Score: ${team1Name} (${stats.teamGoals}) - ${team2Name} (${stats.oppositionGoals}) \n\n`;
+  
+  let gameResult = 'DRAW'
   if (stats.teamGoals > stats.oppositionGoals) {
-    iswin = 'Win'}
-  else {iswin = 'Loss'}  
+    gameResult = 'WIN'}
+  else {gameResult = 'LOSS'}  
 
-  const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n ⌚ Game Time: ${gameTime}\n 🔢 Result: ${iswin} \n\n`;
+  const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n ⌚ Game Time: ${gameTime}\n 🔢 Result: ${gameResult} (${stats.teamGoals} - ${stats.oppositionGoals}) \n\n`;
   
   const allEvents = [...STATE.data, ...STATE.matchEvents]
     .sort((a, b) => a.rawTime - b.rawTime)
