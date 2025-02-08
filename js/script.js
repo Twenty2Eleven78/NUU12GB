@@ -517,13 +517,10 @@ function formatLogForWhatsApp() {
   const stats = generateStats();
 
   //const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n (Game Time: ${gameTime})\n Score: ${team1Name} (${stats.teamGoals}) - ${team2Name} (${stats.oppositionGoals}) \n\n`;
-  iswin = 'Draw'
+  const iswin = 'Draw'
   if (stats.teamGoals > stats.oppositionGoals) {
     iswin = 'Win'}
   else {iswin = 'Loss'}  
-  
-  
-  const iswin = true
 
   const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n ⌚ Game Time: ${gameTime}\n 🔢 Result: ${iswin} \n\n`;
   
