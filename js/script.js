@@ -515,16 +515,22 @@ function formatLogForWhatsApp() {
   const team1Name = elements.Team1NameElement.textContent;
   const team2Name = elements.Team2NameElement.textContent;
   const stats = generateStats();
+  let teamGoals = stats.teamGoals;
+  let oppositionGoals = stats.oppositionGoals;
 
-  //const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n Game Time: ${gameTime})\n Score: ${team1Name} (${stats.teamGoals}) - ${team2Name} (${stats.oppositionGoals}) \n\n`;
-  
-  let gameResult = 'DRAW'
-  if (stats.teamGoals > stats.oppositionGoals) {
-    gameResult = 'WIN'}
-  else {gameResult = 'LOSS'}  
+  let gameResult = ' '
+  if (stats.teamGoals == stats.oppositionGoals) {
+    gameResult = 'DRAW'}
+    else if (stats.teamGoals > stats.oppositionGoals) {
+      gameResult = 'WIN'}
+      else {gameResult = 'LOSS'}  
 
-  const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n ⌚ Game Time: ${gameTime}\n 🔢 Result: ${gameResult} (${stats.teamgoals} - ${stats.oppositiongoals}) \n\n`;
-  
+      console.log(gameResult)
+      console.log(stats.teamGoals)
+      console.log(stats.oppositionGoals)
+
+  const header = `⚽ Match Summary: ${team1Name} vs ${team2Name}\n ⌚ Game Time: ${gameTime}\n 🔢 Result: ${gameResult} (${stats.teamGoals} - ${stats.oppositionGoals}) \n\n`;
+
   const allEvents = [...STATE.data, ...STATE.matchEvents]
     .sort((a, b) => a.rawTime - b.rawTime)
     .map(event => {
@@ -555,34 +561,43 @@ function generateStats() {
   let oppositionGoals = 0;  // Initialize opposition goals counter
   let teamGoals = 0;       // Initialize team goals counter
   
+// Add a check if STATE.data is empty
+if (STATE.data && STATE.data.length > 0) {
   STATE.data.forEach(({ goalScorerName, goalAssistName }) => {
-   if (goalScorerName === "Opposition Team") {
+    if (goalScorerName === "Opposition Team") {
       oppositionGoals++;
-    } else {
-		teamGoals++;
+    } else if (goalScorerName) { // Check if goalScorerName exists
+      teamGoals++;
       goalScorers.set(goalScorerName, (goalScorers.get(goalScorerName) || 0) + 1);
       if (goalAssistName) {
         assists.set(goalAssistName, (assists.get(goalAssistName) || 0) + 1);
       }
     }
   });
+}
+  // Calculate total team goals directly from the counter
+  const totalTeamGoals = teamGoals;
   
-  const topScorers = Array.from(goalScorers.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(([name, goals]) => `${name}: ${goals}`)
-    .join(', ');
-    
-  const topAssists = Array.from(assists.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(([name, assists]) => `${name}: ${assists}`)
-    .join(', ');
+  const topScorers = goalScorers.size > 0 
+  ? Array.from(goalScorers.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([name, goals]) => `${name}: ${goals}`)
+      .join(', ')
+  : 'None';
+  
+const topAssists = assists.size > 0
+  ? Array.from(assists.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([name, assists]) => `${name}: ${assists}`)
+      .join(', ')
+  : 'None';
   
   return {
-        statsstring:  `📊 Stats:\nTeam Goals: ${goalScorers.size > 0 ? Array.from(goalScorers.values()).reduce((a, b) => a + b) : 0}\nOpposition Goals: ${oppositionGoals}\nTop Scorers: ${topScorers}\nTop Assists: ${topAssists}`,
-        teamGoals: teamGoals,
-        oppositiongoals: oppositionGoals
+        statsstring:  `📊 Stats:\nTeam Goals: ${totalTeamGoals}\nOpposition Goals: ${oppositionGoals}\nTop Scorers: ${topScorers}\nTop Assists: ${topAssists}`,
+        teamGoals: totalTeamGoals,
+        oppositionGoals: oppositionGoals
   }
 }
 
